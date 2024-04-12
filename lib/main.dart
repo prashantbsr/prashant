@@ -35,50 +35,7 @@ class _MyAppState extends State<MyApp> {
         useMaterial3: true,
         brightness: Brightness.dark,
       ),
-      home: Scaffold(
-        body: IndexedStack(
-          index: currentIndex,
-          children: screens,
-        ),
-        extendBody: true,
-        bottomNavigationBar: BottomNavigationBar(
-          selectedItemColor: Colors.white,
-          type: BottomNavigationBarType.fixed,
-          elevation: 0,
-          currentIndex: currentIndex,
-          onTap: (index) {
-            setState(() {
-              currentIndex = index;
-            });
-          },
-          items: [
-            const BottomNavigationBarItem(
-              label: 'Home',
-              icon: Icon(
-                Icons.home_rounded,
-              ),
-            ),
-            const BottomNavigationBarItem(
-              label: 'My Designs',
-              icon: Icon(
-                Icons.brush_rounded,
-              ),
-            ),
-            const BottomNavigationBarItem(
-              label: 'How',
-              icon: Icon(
-                Icons.account_tree_rounded,
-              ),
-            ),
-            const BottomNavigationBarItem(
-              label: 'Contact',
-              icon: Icon(
-                Icons.contact_page_rounded,
-              ),
-            ),
-          ],
-        ),
-      ),
+      home: const PsScHome(),
     );
   }
 }
