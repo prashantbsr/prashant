@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:prashant/screens/s_ui_ux.dart';
 
 class PsScHome extends StatefulWidget {
   const PsScHome({super.key});
@@ -135,6 +136,13 @@ class _PsScHomeState extends State<PsScHome> {
                     return ListTile(
                       minVerticalPadding: 16,
                       trailing: const Icon(Icons.arrow_forward_sharp),
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const PrScUiUx(),
+                          ),
+                        );
+                      },
                       title: Text(
                         servicesList[i]['title'],
                         style: GoogleFonts.poppins().copyWith(

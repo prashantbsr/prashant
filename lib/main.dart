@@ -30,10 +30,13 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
+      title: 'Prashant',
+      darkTheme: ThemeData.dark(),
+      themeMode: ThemeMode.dark,
       theme: ThemeData(
         useMaterial3: true,
         brightness: Brightness.dark,
+        
       ),
       home: const PsScHome(),
     );
