@@ -13,7 +13,6 @@ class PsScHome extends StatefulWidget {
 
 class _PsScHomeState extends State<PsScHome> {
   bool _isVisible = false;
-  bool _isBgVisible = false;
   List servicesList = [
     {'title': 'UI/UX', 'sub': 'I build intuitive user-centric interfaces.'},
     {
@@ -34,11 +33,6 @@ class _PsScHomeState extends State<PsScHome> {
       });
     });
 
-    Future.delayed(const Duration(seconds: 3), () {
-      setState(() {
-        _isBgVisible = true;
-      });
-    });
   }
 
   @override
@@ -54,50 +48,45 @@ class _PsScHomeState extends State<PsScHome> {
             children: [
               Positioned(
                 top: MediaQuery.of(context).size.height * 0.25,
-                child: AnimatedOpacity(
-                  opacity: _isBgVisible ? 1.0 : 0.0,
-                  duration: const Duration(milliseconds: 400),
-                  curve: Curves.easeIn,
-                  child: Container(
-                    height: MediaQuery.of(context).size.height * 0.45,
-                    width: MediaQuery.of(context).size.width * 0.5,
-                    decoration: BoxDecoration(
-                      gradient: const SweepGradient(
-                        center: Alignment.center,
-                        startAngle: 2.35,
-                        colors: [
-                          Color.fromRGBO(199, 96, 0, 0.5),
-                          Color.fromRGBO(7, 29, 228, 0.5),
-                        ],
-                        stops: [0.1, 0.8],
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.4),
-                          blurRadius: 20,
-                        ),
+                child: Container(
+                  height: MediaQuery.of(context).size.height * 0.45,
+                  width: MediaQuery.of(context).size.width * 0.5,
+                  decoration: BoxDecoration(
+                    gradient: const SweepGradient(
+                      center: Alignment.center,
+                      startAngle: 2.35,
+                      colors: [
+                        Color.fromRGBO(199, 96, 0, 0.5),
+                        Color.fromRGBO(7, 29, 228, 0.5),
                       ],
+                      stops: [0.1, 0.8],
                     ),
-                    child: BackdropFilter(
-                      filter: ImageFilter.blur(sigmaX: 80.0, sigmaY: 110.0),
-                      child: Container(
-                        color: Colors.black.withOpacity(0), // Transparent color
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.4),
+                        blurRadius: 20,
                       ),
+                    ],
+                  ),
+                  child: BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 80.0, sigmaY: 110.0),
+                    child: Container(
+                      color: Colors.black.withOpacity(0), // Transparent color
                     ),
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    AnimatedOpacity(
-                      opacity: _isVisible ? 1.0 : 0.0,
-                      duration: Duration(milliseconds: 500),
-                      curve: Curves.easeIn,
-                      child: Text(
+              AnimatedOpacity(
+                opacity: _isVisible ? 1.0 : 0.0,
+                        duration: Duration(milliseconds: 500),
+                        curve: Curves.easeIn,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
                         'Hello, I am',
                         style: GoogleFonts.poppins().copyWith(
                           fontWeight: FontWeight.w600,
@@ -105,28 +94,28 @@ class _PsScHomeState extends State<PsScHome> {
                           color: theme.bodyMedium!.color!.withOpacity(0.6),
                         ),
                       ),
-                    ),
-                    Text(
-                      'Dr. Prashant Sharma',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w900,
-                        fontFamily: GoogleFonts.poppins().fontFamily,
-                        fontSize:
-                            Theme.of(context).textTheme.displayMedium!.fontSize,
-                        color: theme.bodyMedium!.color!.withOpacity(0.9),
+                      Text(
+                        'Dr. Prashant Sharma',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w900,
+                          fontFamily: GoogleFonts.poppins().fontFamily,
+                          fontSize:
+                              Theme.of(context).textTheme.displayMedium!.fontSize,
+                          color: theme.bodyMedium!.color!.withOpacity(0.9),
+                        ),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 6,
-                    ),
-                    Text(
-                      'I develop apps.',
-                      style: style.copyWith(
-                        fontSize: theme.titleLarge!.fontSize,
-                        color: theme.bodyMedium!.color!.withOpacity(0.6),
+                      const SizedBox(
+                        height: 6,
                       ),
-                    ),
-                  ],
+                      Text(
+                        'I develop apps.',
+                        style: style.copyWith(
+                          fontSize: theme.titleLarge!.fontSize,
+                          color: theme.bodyMedium!.color!.withOpacity(0.6),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],
