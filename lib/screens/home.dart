@@ -34,17 +34,16 @@ class _PsScHomeState extends State<PsScHome> {
           Stack(
             children: [
               Positioned(
-                top: MediaQuery.of(context).size.height * 0.45,
-                left: 20,
+                top: MediaQuery.of(context).size.height * 0.25,
                 child: RepaintBoundary(
                   child: Container(
-                    height: 200,
-                    width: 200,
+                    height: MediaQuery.of(context).size.height * 0.45,
+                    width: MediaQuery.of(context).size.width * 0.5,
                     decoration: const BoxDecoration(
                       gradient: SweepGradient(
                         startAngle: 2.35,
                         colors: [
-                          Color(0xFFc76000), // First color
+                          Color.fromRGBO(199, 96, 0, 0.5), // First color
                           Color.fromRGBO(
                             7,
                             29,
@@ -57,8 +56,7 @@ class _PsScHomeState extends State<PsScHome> {
                     child: BackdropFilter(
                       filter: ImageFilter.blur(sigmaX: 50.0, sigmaY: 80.0),
                       child: Container(
-                        height: 200,
-                        width: 200,
+                        
                         color: Colors.black.withOpacity(0), // Transparent color
                       ),
                     ),
