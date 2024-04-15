@@ -58,7 +58,7 @@ class _PsScHomeState extends State<PsScHome> {
                       ],
                     ),
                    child: BackdropFilter(
-                      filter: ImageFilter.blur(sigmaX: 50.0, sigmaY: 80.0),
+                      filter: ImageFilter.blur(sigmaX: 80.0, sigmaY: 110.0),
                       child: Container(
                         height: MediaQuery.of(context).size.height,
                         color: Colors.black.withOpacity(0), // Transparent color
