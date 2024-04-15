@@ -14,16 +14,16 @@ class _PrScUiUxState extends State<PrScUiUx> {
     TextTheme theme = Theme.of(context).textTheme;
     return Scaffold(
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            'UI/UXa',
-            style: GoogleFonts.poppins().copyWith(
-              fontSize: theme.displayLarge!.fontSize,
-              fontWeight: FontWeight.bold,
+            'UI/UX',
+            style: GoogleFonts.archivoBlack().copyWith(
+              fontSize: theme.displayLarge!.fontSize!+20,
+              fontWeight: FontWeight.normal,
+              color: theme.displayLarge!.color!.withOpacity(0.4),
             ),
           ),
-
           
         ],
       ),

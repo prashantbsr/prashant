@@ -1,9 +1,8 @@
 import 'dart:ui';
-
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:prashant/screens/s_ui_ux.dart';
 
 class PsScHome extends StatefulWidget {
   const PsScHome({super.key});
@@ -13,6 +12,7 @@ class PsScHome extends StatefulWidget {
 }
 
 class _PsScHomeState extends State<PsScHome> {
+  bool _isVisible = false;
   List servicesList = [
     {'title': 'UI/UX', 'sub': 'I build intuitive user-centric interfaces.'},
     {
@@ -22,6 +22,19 @@ class _PsScHomeState extends State<PsScHome> {
     {'title': 'Websites', 'sub': 'Get yourself or your business a website.'},
     {'title': 'Brand Consultant', 'sub': 'I help with buiding your brand.'},
   ];
+
+   @override
+  void initState() {
+    super.initState();
+    // Set _isVisible to true after a delay (for example, 2 seconds)
+    Future.delayed(Duration(seconds: 2), () {
+      setState(() {
+        _isVisible = true;
+      });
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     TextStyle style = GoogleFonts.poppins();
@@ -55,13 +68,13 @@ class _PsScHomeState extends State<PsScHome> {
                       ),
                     ],
                   ),
-                 child: BackdropFilter(
+                  child: BackdropFilter(
                     filter: ImageFilter.blur(sigmaX: 80.0, sigmaY: 110.0),
                     child: Container(
-                     // height: MediaQuery.of(context).size.height,
-                    //  color: Colors.black.withOpacity(0), // Transparent color
+                      height: 1,
+                      //  color: Colors.black.withOpacity(0), // Transparent color
                     ),
-                  ), 
+                  ),
                 ),
               ),
               Padding(
@@ -70,18 +83,25 @@ class _PsScHomeState extends State<PsScHome> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text(
-                      'Hello, I am',
-                      style: GoogleFonts.poppins().copyWith(
-                        fontWeight: FontWeight.w600,
-                        fontSize: theme.titleLarge!.fontSize,
-                        color: theme.bodyMedium!.color!.withOpacity(0.6),
+                    
+                    AnimatedOpacity(
+                      opacity: _isVisible ? 1.0 : 0.0,
+                      duration: Duration(milliseconds: 500),
+          curve: Curves.easeIn,
+                      child: Text(
+                        'Hello, I am',
+                        style: GoogleFonts.poppins().copyWith(
+                          fontWeight: FontWeight.w600,
+                          fontSize: theme.titleLarge!.fontSize,
+                          color: theme.bodyMedium!.color!.withOpacity(0.6),
+                        ),
                       ),
                     ),
                     Text(
                       'Dr. Prashant Sharma',
-                      style: GoogleFonts.poppins().copyWith(
-                        fontWeight: FontWeight.w700,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w900,
+                        fontFamily: GoogleFonts.poppins().fontFamily,
                         fontSize:
                             Theme.of(context).textTheme.displayMedium!.fontSize,
                         color: theme.bodyMedium!.color!.withOpacity(0.9),
@@ -174,13 +194,7 @@ class _PsScHomeState extends State<PsScHome> {
                     return ListTile(
                       minVerticalPadding: 16,
                       trailing: const Icon(Icons.arrow_forward_sharp),
-                      onTap: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (context) => const PrScUiUx(),
-                          ),
-                        );
-                      },
+                      onTap: null,
                       title: Text(
                         servicesList[i]['title'],
                         style: GoogleFonts.poppins().copyWith(
