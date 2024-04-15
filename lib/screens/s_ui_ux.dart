@@ -22,7 +22,6 @@ class _PrScUiUxState extends State<PrScUiUx> {
               fontSize: theme.displayLarge!.fontSize,
               fontWeight: FontWeight.bold,
             ),
-            // style: theme.displayLarge,
           ),
         ],
       ),
