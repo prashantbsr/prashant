@@ -2,6 +2,7 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:prashant/screens/s_blog_home.dart';
 
 class PsScHome extends StatefulWidget {
   const PsScHome({super.key});
@@ -40,8 +41,6 @@ class _PsScHomeState extends State<PsScHome> {
     });
   }
 
-  
-
   @override
   Widget build(BuildContext context) {
     TextStyle style = GoogleFonts.poppins();
@@ -57,8 +56,8 @@ class _PsScHomeState extends State<PsScHome> {
                 top: MediaQuery.of(context).size.height * 0.25,
                 child: AnimatedOpacity(
                   opacity: _isBgVisible ? 1.0 : 0.0,
-                duration:const  Duration(milliseconds: 400),
-                      curve: Curves.easeIn,
+                  duration: const Duration(milliseconds: 400),
+                  curve: Curves.easeIn,
                   child: Container(
                     height: MediaQuery.of(context).size.height * 0.45,
                     width: MediaQuery.of(context).size.width * 0.5,
@@ -82,8 +81,7 @@ class _PsScHomeState extends State<PsScHome> {
                     child: BackdropFilter(
                       filter: ImageFilter.blur(sigmaX: 80.0, sigmaY: 110.0),
                       child: Container(
-                        height: 1,
-                        //  color: Colors.black.withOpacity(0), // Transparent color
+                        color: Colors.black.withOpacity(0), // Transparent color
                       ),
                     ),
                   ),
@@ -228,6 +226,55 @@ class _PsScHomeState extends State<PsScHome> {
                       ),
                     );
                   },
+                ),
+              ],
+            ),
+          ),
+
+          //know more about me
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Want to know more about me?',
+                  style: GoogleFonts.poppins().copyWith(
+                    fontWeight: FontWeight.w900,
+                    fontSize:
+                        Theme.of(context).textTheme.displayMedium!.fontSize,
+                    color: theme.bodyMedium!.color!.withOpacity(0.4),
+                  ),
+                ),
+                const SizedBox(
+                  height: 18,
+                ),
+                Text(
+                  'You can explore my blog.\nIt\'s an example of my work. I have designed it on my own. I hope wou will like it!',
+                  style: GoogleFonts.poppins().copyWith(
+                    fontWeight: FontWeight.w400,
+                    fontSize: Theme.of(context).textTheme.titleMedium!.fontSize,
+                    color: theme.bodyMedium!.color!.withOpacity(0.9),
+                  ),
+                ),
+                const SizedBox(
+                  height: 32,
+                ),
+                OutlinedButton(
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const PrScBlogHome(),
+                      ),
+                    );
+                  },
+                  child: Text(
+                    'Explore My Blog',
+                    style: GoogleFonts.poppins(
+                      color: theme.bodyMedium!.color,
+                    ),
+                  ),
                 ),
               ],
             ),

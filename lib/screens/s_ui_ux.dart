@@ -18,7 +18,7 @@ class _PrScUiUxState extends State<PrScUiUx> {
         children: [
           Text(
             'UI/UX',
-            style: GoogleFonts.archivoBlack().copyWith(
+            style: GoogleFonts.frederickaTheGreat().copyWith(
               fontSize: theme.displayLarge!.fontSize!+20,
               fontWeight: FontWeight.normal,
               color: theme.displayLarge!.color!.withOpacity(0.4),

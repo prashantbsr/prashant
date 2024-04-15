@@ -36,7 +36,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         useMaterial3: true,
         brightness: Brightness.dark,
-        
+        colorSchemeSeed: Colors.orange,
       ),
       home: const PsScHome(),
     );
