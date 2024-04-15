@@ -53,12 +53,12 @@ class _PsScHomeState extends State<PsScHome> {
         children: [
           Stack(
             children: [
-              AnimatedOpacity(
-                opacity: _isBgVisible ? 1.0 : 0.0,
-                duration: Duration(milliseconds: 400),
+              Positioned(
+                top: MediaQuery.of(context).size.height * 0.25,
+                child: AnimatedOpacity(
+                  opacity: _isBgVisible ? 1.0 : 0.0,
+                duration:const  Duration(milliseconds: 400),
                       curve: Curves.easeIn,
-                child: Positioned(
-                  top: MediaQuery.of(context).size.height * 0.25,
                   child: Container(
                     height: MediaQuery.of(context).size.height * 0.45,
                     width: MediaQuery.of(context).size.width * 0.5,
