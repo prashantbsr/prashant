@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:prashant/screens/s_ui_ux.dart';
 
@@ -32,28 +33,34 @@ class _PsScHomeState extends State<PsScHome> {
         children: [
           Stack(
             children: [
-              Center(
-                child: Container(
-                  height: 200,
-                  width: 400,
-                  decoration: const BoxDecoration(
-                    gradient: SweepGradient(
-                      startAngle: 2.35,
-                      colors: [
-                        Color(0xFFc76000), // First color
-                        Color.fromRGBO(
-                          7,
-                          29,
-                          228,
-                          0.5,
-                        ), // Second color with opacity
-                      ],
+              Positioned(
+                top: MediaQuery.of(context).size.height * 0.45,
+                left: 20,
+                child: RepaintBoundary(
+                  child: Container(
+                    height: 200,
+                    width: 200,
+                    decoration: const BoxDecoration(
+                      gradient: SweepGradient(
+                        startAngle: 2.35,
+                        colors: [
+                          Color(0xFFc76000), // First color
+                          Color.fromRGBO(
+                            7,
+                            29,
+                            228,
+                            0.5,
+                          ), // Second color with opacity
+                        ],
+                      ),
                     ),
-                  ),
-                  child: BackdropFilter(
-                    filter: ImageFilter.blur(sigmaX: 100.0, sigmaY: 100.0),
-                    child: Container(
-                      color: Colors.black.withOpacity(0), // Transparent color
+                    child: BackdropFilter(
+                      filter: ImageFilter.blur(sigmaX: 50.0, sigmaY: 80.0),
+                      child: Container(
+                        height: 200,
+                        width: 200,
+                        color: Colors.black.withOpacity(0), // Transparent color
+                      ),
                     ),
                   ),
                 ),
