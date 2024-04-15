@@ -35,36 +35,33 @@ class _PsScHomeState extends State<PsScHome> {
             children: [
               Positioned(
                 top: MediaQuery.of(context).size.height * 0.25,
-                child: RepaintBoundary(
-                  child: Container(
-                    
-                    height: MediaQuery.of(context).size.height * 0.45,
-                    width: MediaQuery.of(context).size.width * 0.5,
-                    decoration: BoxDecoration(
-                      gradient: const SweepGradient(
-                        center: Alignment.center,
-                        startAngle: 2.35,
-                        colors: [
-                          Color.fromRGBO(199, 96, 0, 0.5),
-                          Color.fromRGBO(7, 29, 228, 0.5),
-                        ],
-                        stops: [0.1, 0.8],
-                      ),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.4),
-                          blurRadius: 20,
-                        ),
+                child: Container(
+                  height: MediaQuery.of(context).size.height * 0.45,
+                  width: MediaQuery.of(context).size.width * 0.5,
+                  decoration: BoxDecoration(
+                    gradient: const SweepGradient(
+                      center: Alignment.center,
+                      startAngle: 2.35,
+                      colors: [
+                        Color.fromRGBO(199, 96, 0, 0.5),
+                        Color.fromRGBO(7, 29, 228, 0.5),
                       ],
+                      stops: [0.1, 0.8],
                     ),
-                   child: BackdropFilter(
-                      filter: ImageFilter.blur(sigmaX: 80.0, sigmaY: 110.0),
-                      child: Container(
-                        height: MediaQuery.of(context).size.height,
-                        color: Colors.black.withOpacity(0), // Transparent color
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.4),
+                        blurRadius: 20,
                       ),
-                    ), 
+                    ],
                   ),
+                 child: BackdropFilter(
+                    filter: ImageFilter.blur(sigmaX: 80.0, sigmaY: 110.0),
+                    child: Container(
+                      height: MediaQuery.of(context).size.height,
+                      color: Colors.black.withOpacity(0), // Transparent color
+                    ),
+                  ), 
                 ),
               ),
               Padding(
