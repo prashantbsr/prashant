@@ -25,7 +25,7 @@ class _PsScHomeState extends State<PsScHome> {
 
   whatsapp() async {
     var contact = "+917728986546";
-    var androidUrl = "whatsapp://send?phone=$contact&text=Hi,";
+    var androidUrl = "https://wa.me/$contact?text=${Uri.parse('Hi,')}";
     var iosUrl = "https://wa.me/$contact?text=${Uri.parse('Hi,')}";
 
     try {
