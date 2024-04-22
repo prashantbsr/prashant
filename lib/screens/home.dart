@@ -22,7 +22,7 @@ class _PsScHomeState extends State<PsScHome> {
     {'title': 'Brand Consultant', 'sub': 'I help with buiding your brand.'},
   ];
 
-  var url = "https://flutter.dev";
+  var url = "https://wa.me/7728986546";
 
   Future<void> _launchUrl() async {
     if (!await launchUrl(Uri.parse(url))) {
