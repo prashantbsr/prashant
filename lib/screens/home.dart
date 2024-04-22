@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -23,23 +22,11 @@ class _PsScHomeState extends State<PsScHome> {
     {'title': 'Brand Consultant', 'sub': 'I help with buiding your brand.'},
   ];
 
-  whatsapp() async {
-    var contact = "+917728986546";
-    var androidUrl = "https://wa.me/$contact?text=${Uri.parse('Hi,')}";
-    var iosUrl = "https://wa.me/$contact?text=${Uri.parse('Hi,')}";
+  var url = "https://flutter.dev";
 
-    try {
-      if (Platform.isIOS) {
-        await launchUrl(Uri.parse(iosUrl));
-      } else {
-        await launchUrl(Uri.parse(androidUrl));
-      }
-    } on Exception {
-      ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('WhatsApp not installed on this device.'),
-        ),
-      );
+  Future<void> _launchUrl() async {
+    if (!await launchUrl(Uri.parse(url))) {
+      throw Exception('Could not launch $url');
     }
   }
 
@@ -315,7 +302,7 @@ class _PsScHomeState extends State<PsScHome> {
                 ),
                 OutlinedButton(
                   onPressed: () {
-                    whatsapp();
+                    _launchUrl();
                   },
                   child: const Text('Connect on WhatsApp'),
                 ),
