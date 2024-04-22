@@ -1,8 +1,8 @@
+import 'dart:io';
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:prashant/screens/s_blog_home.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class PsScHome extends StatefulWidget {
   const PsScHome({super.key});
@@ -23,6 +23,26 @@ class _PsScHomeState extends State<PsScHome> {
     {'title': 'Brand Consultant', 'sub': 'I help with buiding your brand.'},
   ];
 
+  whatsapp() async {
+    var contact = "+917728986546";
+    var androidUrl = "whatsapp://send?phone=$contact&text=Hi,";
+    var iosUrl = "https://wa.me/$contact?text=${Uri.parse('Hi,')}";
+
+    try {
+      if (Platform.isIOS) {
+        await launchUrl(Uri.parse(iosUrl));
+      } else {
+        await launchUrl(Uri.parse(androidUrl));
+      }
+    } on Exception {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('WhatsApp not installed on this device.'),
+        ),
+      );
+    }
+  }
+
   @override
   void initState() {
     super.initState();
@@ -32,7 +52,6 @@ class _PsScHomeState extends State<PsScHome> {
         _isVisible = true;
       });
     });
-
   }
 
   @override
@@ -78,8 +97,8 @@ class _PsScHomeState extends State<PsScHome> {
               ),
               AnimatedOpacity(
                 opacity: _isVisible ? 1.0 : 0.0,
-                        duration: Duration(milliseconds: 500),
-                        curve: Curves.easeIn,
+                duration: Duration(milliseconds: 500),
+                curve: Curves.easeIn,
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 16),
                   child: Column(
@@ -99,8 +118,10 @@ class _PsScHomeState extends State<PsScHome> {
                         style: TextStyle(
                           fontWeight: FontWeight.w900,
                           fontFamily: GoogleFonts.poppins().fontFamily,
-                          fontSize:
-                              Theme.of(context).textTheme.displayMedium!.fontSize,
+                          fontSize: Theme.of(context)
+                              .textTheme
+                              .displayMedium!
+                              .fontSize,
                           color: theme.bodyMedium!.color!.withOpacity(0.9),
                         ),
                       ),
@@ -191,7 +212,7 @@ class _PsScHomeState extends State<PsScHome> {
                   itemBuilder: (context, i) {
                     return ListTile(
                       minVerticalPadding: 16,
-                      trailing: const Icon(Icons.arrow_forward_sharp),
+                      //trailing: const Icon(Icons.arrow_forward_sharp),
                       onTap: null,
                       title: Text(
                         servicesList[i]['title'],
@@ -228,7 +249,7 @@ class _PsScHomeState extends State<PsScHome> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Want to know more about me?',
+                  'More about me',
                   style: GoogleFonts.poppins().copyWith(
                     fontWeight: FontWeight.w900,
                     fontSize:
@@ -240,7 +261,38 @@ class _PsScHomeState extends State<PsScHome> {
                   height: 18,
                 ),
                 Text(
-                  'You can explore my blog.\nIt\'s an example of my work. I have designed it on my own. I hope wou will like it!',
+                  'I am from Uttar Pradesh.\nMBBS from KMC Manipal.\nCoding is my passion.\nCurrently building EMR for Teaching Hospitals.',
+                  style: GoogleFonts.poppins().copyWith(
+                    fontWeight: FontWeight.w400,
+                    fontSize: Theme.of(context).textTheme.titleMedium!.fontSize,
+                    color: theme.bodyMedium!.color!.withOpacity(0.9),
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          //know more about me
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Let\'s talk',
+                  style: GoogleFonts.poppins().copyWith(
+                    fontWeight: FontWeight.w900,
+                    fontSize:
+                        Theme.of(context).textTheme.displayMedium!.fontSize,
+                    color: theme.bodyMedium!.color!.withOpacity(0.4),
+                  ),
+                ),
+                const SizedBox(
+                  height: 18,
+                ),
+                Text(
+                  'Let\'s discuss your great idea.',
                   style: GoogleFonts.poppins().copyWith(
                     fontWeight: FontWeight.w400,
                     fontSize: Theme.of(context).textTheme.titleMedium!.fontSize,
@@ -248,22 +300,24 @@ class _PsScHomeState extends State<PsScHome> {
                   ),
                 ),
                 const SizedBox(
-                  height: 32,
+                  height: 10,
+                ),
+                Text(
+                  'prashant.bsr.33@gmail.com',
+                  style: GoogleFonts.poppins().copyWith(
+                    fontWeight: FontWeight.w400,
+                    fontSize: Theme.of(context).textTheme.titleSmall!.fontSize,
+                    color: theme.bodyMedium!.color!.withOpacity(0.6),
+                  ),
+                ),
+                const SizedBox(
+                  height: 14,
                 ),
                 OutlinedButton(
                   onPressed: () {
-                    Navigator.of(context).push(
-                      MaterialPageRoute(
-                        builder: (context) => const PrScBlogHome(),
-                      ),
-                    );
+                    whatsapp();
                   },
-                  child: Text(
-                    'Explore My Blog',
-                    style: GoogleFonts.poppins(
-                      color: theme.bodyMedium!.color,
-                    ),
-                  ),
+                  child: const Text('Connect on WhatsApp'),
                 ),
               ],
             ),
